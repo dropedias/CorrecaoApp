@@ -1,0 +1,39 @@
+<div class="container" style="text-align: center">
+  <img src="https://seguro.cesgranrio.org.br/imagens/logo.png" alt="">
+  <h5>Sistema de Controle de Questões</h5>
+</div>
+<div class="jumbotron">
+  <h2 class="display4 text-center">Correção de Questões - Detalhe</h2>
+  <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+    <!-- <input type="hidden" name="IdQuestao" #IdQuestao="ngModel" [(ngModel)]="service.questaoApi.IdQuestao"> -->
+    <div class="form-group">
+      <label>Descrição da Questão</label>
+      <input name="DescricaoQuestao" #DescricaoQuestao="ngModel" [(ngModel)]="service.questaoApi.DescricaoQuestao" class="form-control" disabled>
+    </div>        
+    <table class="table table-radio">
+      <tr>
+        <th>Nome do Candidado</th>
+        <th style="text-align: center;">Documento</th>
+        <th>Nota</th>
+      </tr>      
+      <tr>
+        <td>{{service.questaoApi.Candidatos[service.candidatoSeed].NomeCandidato}}</td>            
+        <td style="text-align: center;"><img [src]="'data:image/jpeg;base64,' + service.questaoApi.Candidatos[service.candidatoSeed].Imagem.Conteudo" width="400" height="600"></td>
+        <td>
+          <div class="radio">
+            <label style="margin-right: 10px;"><input [checked]="notaSelecionada == 0" (change)="mudarNota(0)" type="radio" id="rdb0" name="notaCand" value="0">0</label>
+            <label style="margin-right: 10px;"><input [checked]="notaSelecionada == 2.5" (change)="mudarNota(2.5)" type="radio" id="rdb2" name="notaCand" value="2.5">2.5</label>
+            <label style="margin-right: 10px;"><input [checked]="notaSelecionada == 5" (change)="mudarNota(5)" type="radio" id="rdb5" name="notaCand" value="5">5</label>
+            <label style="margin-right: 10px;"><input [checked]="notaSelecionada == 7.5" (change)="mudarNota(7.5)" type="radio" id="rdb7" name="notaCand" value="7.5">7.5</label>
+            <label style="margin-right: 10px;"><input [checked]="notaSelecionada == 10" (change)="mudarNota(10)" type="radio" id="rdb10" name="notaCand" value="10">10</label>
+          </div>
+        </td>
+      </tr>
+    </table> 
+    <div >
+      <button type="submit" [disabled]="form.invalid" class="btn">Corrigir</button>
+    </div>
+  </form>
+</div>
+
+

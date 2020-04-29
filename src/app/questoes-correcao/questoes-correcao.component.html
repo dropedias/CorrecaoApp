@@ -1,0 +1,17 @@
+<div class="container" style="text-align: center">
+  <img src="https://seguro.cesgranrio.org.br/imagens/logo.png" alt="">
+  <h5>Sistema de Controle de Questões</h5>
+</div>
+<h2 class="display4 text-center">Correção de Questões</h2>
+<table class="table">
+  <tr>
+    <th>Descrição da Questão</th>
+    <th>Tipo da Questão</th>
+  </tr>
+  <tr *ngFor="let questao of service.listQuestao">
+    <td>{{questao.DescricaoQuestao}}</td>
+    <td>{{questao.IdTipoQuestao === 1 ? "Discursiva" : "Redação"}}</td>    
+    <td><button (click)="gotoQuestaoDetail('/questao-detail', questao.IdQuestao)" class="btn btn-sm btn-outline-danger">Corrigir</button></td>
+  </tr>
+</table>
+ 

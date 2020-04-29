@@ -1,0 +1,11 @@
+<table class="table table-hover">
+  <tr>
+    <th>Descrição da Questão</th>
+    <th>Tipo da Questão</th>
+  </tr>
+  <tr *ngFor="let questao of service.listQuestao">
+    <td (click)="populaForm(questao)">{{questao.DescricaoQuestao}}</td>
+    <td (click)="populaForm(questao)">{{questao.IdTipoQuestao === 1 ? "Discursiva" : "Redação"}}</td>
+    <td><button (click)="deleteQuestao(questao.IdQuestao)" class="btn btn-sm btn-outline-danger">X</button></td>
+  </tr>
+</table>
